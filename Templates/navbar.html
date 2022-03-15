@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>{%block title %} {% endblock %}</title>
+  <style>
+    /*navigation bar*/
+    #logo {
+      width: 90px;
+      margin-right: 10px;
+    }
+
+    .navbar-custom {
+      background-color: #0084A8;
+    }
+
+    .nav-link {
+      color: white;
+      font-size: large;
+    }
+
+    .nav-link:hover {
+      color: #96D0A0;
+    }
+
+    .dropdown-item {
+      text-align: center;
+    }
+
+    .logout {
+      margin-left: 39px;
+    }
+    {% block CSS %}{% endblock  %} 
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <img id="logo" src="https://i.ibb.co/BNqFCsG/logo.jpg" alt="logo" border="0">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Reccomandation">Reccomendations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/GovtSchemes">Government Schemes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/About" target="_blank">About</a>
+          </li>
+        </ul>
+        <!-- Profile -->
+        <div class="btn-group dropstart">
+          <a href="#" class="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://i.ibb.co/wC6Y1mQ/pp.png" width="32" class="rounded-circle"></img>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="myprofile.html">My Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <a href="/"><button type="submit" class="logout btn btn-danger">Log Out</button></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% block body %} {% endblock %}
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
