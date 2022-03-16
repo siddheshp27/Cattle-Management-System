@@ -57,6 +57,7 @@ def home(request):
        tags=list(settags)
        ec=0
        mic=0
+       totmilk=0
        while ec < len(tags):
          tempdataet=tempstore.filter(eartag=tags[ec])
          tempmilkss=tempdataet.values('totalmilk')
@@ -67,9 +68,15 @@ def home(request):
           totemilk+=tempmilks[mic]
           mic+=1
          totallst.append(totemilk)
+         totmilk+=totemilk
          ec+=1
-       print(totallst)  
-       return render(request, 'fetch.html',totallst)  
+       print(totmilk)    
+       storeall=tags
+
+       parmas={'storeall':[storeall[0],totallst[0]]}
+       print(parmas["storeall"])
+       print(type(totallst))    
+       return render(request, 'fetch.html',parmas)  
        
    return render(request, 'home.html')
 

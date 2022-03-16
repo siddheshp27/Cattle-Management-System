@@ -1,8 +1,9 @@
 {% extends 'navbar.html' %}
 {% block body %}
-{% for i in totalsst %}
+{% comment %} {% for i in storeall %}
 {{i}}
-{% comment %} {{i.totalmilk}}
-{{i.production}} {% endcomment %}
 {% endfor %}
+{% for i in totallst %}
+{{i}}
+{% endfor %}  {% endcomment %}
 {% endblock  %} 
