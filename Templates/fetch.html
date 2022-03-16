@@ -1,9 +1,11 @@
 {% extends 'navbar.html' %}
 {% block body %}
-{% comment %} {% for i in storeall %}
+{% for i in storeall %}
 {{i}}
-{% endfor %}
-{% for i in totallst %}
-{{i}}
-{% endfor %}  {% endcomment %}
+{% for j in totallst %}
+{% if forloop.parentloop.counter == forloop.counter %}
+{{j}}
+{% endif %}
+{% endfor %} 
+{% endfor %} 
 {% endblock  %} 

@@ -70,12 +70,15 @@ def home(request):
          totallst.append(totemilk)
          totmilk+=totemilk
          ec+=1
-       print(totmilk)    
+       print(ec)    
        storeall=tags
-
-       parmas={'storeall':[storeall[0],totallst[0]]}
-       print(parmas["storeall"])
-       print(type(totallst))    
+    #    count=0
+    #    while(count<ec):
+       parmas={"storeall" : storeall,"totallst":totallst,"varint":0}
+    #     count+=1
+    #     for i in parmas:
+    #         print(parmas["1"])
+    #    print(type(totallst))    
        return render(request, 'fetch.html',parmas)  
        
    return render(request, 'home.html')
