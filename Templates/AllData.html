@@ -98,12 +98,13 @@
                 <th class="cell100 column4">Sex</th>
                 <th class="cell100 column5">Breed</th>
                 <th class="cell100 column6">Stage</th>
+                <th class="cell100 column7">Missed <br> Heat</th>
               </tr>
         </thead>
       </table>
     </div>
 
-    <div class="table100-body">
+    <div class="table100-body" >
       <table>
         <tbody>
           {% for i in storeall  %}
@@ -113,6 +114,8 @@
             <td class="cell100 column3">{{i.DOB}}</td> 
             <td class="cell100 column4">{{i.sex}}</td>
             <td class="cell100 column5">{{i.breed}}</td>
+            <form action="#" method="POST">
+              {% csrf_token %}           
             <td class="cell100 column6">
               <select class="form-select" aria-label="Default select example">
                 <option selected>{{i.stage}}</option>
@@ -122,7 +125,18 @@
                 <option value="4">Adult</option>
               </select>
             </td>
-            {% csrf_token %}           
+            <td class="cell100 column7">
+              {% if i.sex == "FEMALE" %}
+                {% if  i.stage == "Adult" %}
+                    <input name="Missed Heat" id="Missed Heat"  class="form-control form-control-sm milk" type="date" placeholder="" aria-label="default input example">
+                 {% else %}
+                      N.A.
+                {% endif %}
+                {% else %}
+                 N.A.
+              {% endif %}
+              </td>
+            </form>
           </tr>
           {% endfor %}
            </tbody>

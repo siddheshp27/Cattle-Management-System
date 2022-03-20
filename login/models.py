@@ -22,3 +22,5 @@ class Dailydata(models.Model):
      eartag= models.IntegerField()
      totalmilk= models.IntegerField()
      production=models.CharField(max_length=30)
+
+  

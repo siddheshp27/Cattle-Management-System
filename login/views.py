@@ -72,13 +72,7 @@ def home(request):
          ec+=1
        print(ec)    
        storeall=tags
-    #    count=0
-    #    while(count<ec):
-       parmas={"storeall" : storeall,"totallst":totallst,"varint":0}
-    #     count+=1
-    #     for i in parmas:
-    #         print(parmas["1"])
-    #    print(type(totallst))    
+       parmas={"storeall" : storeall,"totallst":totallst,"varint":0} 
        return render(request, 'fetch.html',parmas)  
        
    return render(request, 'home.html')
@@ -110,6 +104,9 @@ def animal_registration(request):
    return render(request,'animal_registration.html')
 
 def alldata(request):
+    if request.method == "POST" :
+        HEAT = request.POST['Missed Heat']
+    
     storeall=Animaldata.objects.all()
     parmas={'storeall': storeall}
     return render(request,'AllData.html',parmas) 
