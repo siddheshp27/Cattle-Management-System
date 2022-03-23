@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Userdata
 from .models import Animaldata,Dailydata
-# from Animaldata import stage
 from django.contrib import messages
+from datetime import datetime
 
 def register(request):
     if request.method == "POST":
@@ -45,7 +45,6 @@ def login(request):
 def home(request):
    totemilk=0
    totallst=[]
-
    if request.method=="POST" :
        finddate=request.POST['FindDate']
        sort=Dailydata.objects.values('date')   
@@ -104,11 +103,20 @@ def animal_registration(request):
    return render(request,'animal_registration.html')
 
 def alldata(request):
-    if request.method == "POST" :
-        HEAT = request.POST['Missed Heat']
-    
     storeall=Animaldata.objects.all()
     parmas={'storeall': storeall}
+    if request.method == "POST" :
+        HEAT_str = request.POST['Missed Heat']
+        count=request.POST['Submit']
+        
+
+
+        # Heat= datetime.strptime(HEAT_str,'%Y-%m-%d')
+        # today=datetime.now()
+        # print(type(Heat))
+        # print(today-Heat)
+    
+    
     return render(request,'AllData.html',parmas) 
 
 def milking(request):
@@ -125,7 +133,7 @@ def pregnant(request):
     for i in s:
         storeall =Animaldata.objects.filter(stage="Pregnant")
         parmas={'storeall': storeall}
-    return render(request,'Display.html' ,parmas)
+    return render(request,'pregnant.html' ,parmas)
 
 def calf(request):
     sort=Animaldata.objects.values('stage')   
@@ -178,8 +186,6 @@ def morning(request):
      return redirect('/Morning') 
     
     parmas={'storeall': storeall}
-
-            
     return render(request, 'morning.html',parmas)
 
 def afternoon(request):
@@ -226,4 +232,24 @@ def evening(request):
             
     return render(request, 'evening.html',parmas)
 
+
+def heat(request):
+    sort=Animaldata.objects.values('stage') 
+    s={items['stage'] for items in sort}
+    for i in s:
+        storeall =Animaldata.objects.filter(stage="Adult")
+    tags=storeall.values('Eartag')
+    if request.method=="POST": 
+     j=request.POST['submit']   
+     z=int(j)
+     tagtemp=tags[(z-1)]      
+     tag=tagtemp["Eartag"]
+     date =request.POST['Date'] 
+     print(date)
+    #  milk = Dailydata(eartag=tag,date=date,totalmilk=milk,production="Morning")
+    #  milk.save()
+     return redirect('/HeatPeriod') 
+    
+    parmas={'storeall': storeall}
+    return render(request, 'Heat.html',parmas)
 

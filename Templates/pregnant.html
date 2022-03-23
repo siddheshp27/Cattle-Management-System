@@ -129,20 +129,16 @@ td {
         <tr>
           <th scope="col">Eartag No.   </th>
           <th scope="col">Date Of Birth</th>
-          <th scope="col">Sex          </th>
           <th scope="col">Breed</th>
-          <th scope="col">Stage</th>
           <th scope="col">No. Of Calvings</th>
         </tr>
       </thead>
       <tbody>
     {% for i in storeall  %}
-      <td> {% block Eartag %} {% endblock %} </td>
-      <td> {% block DOB %} {% endblock %} </td>
-      <td> {% block Sex %} {% endblock %} </td>
-      <td> {% block Breed %} {% endblock %} </td>
-      <td> {% block Stage %} {% endblock %} </td>
-      <td> {% block Calvings %} {% endblock %} </td>
+      <td> {{i.Eartag}} </td>
+      <td> {{i.DOB}} </td>
+      <td>  {{i.breed}} </td>
+      <td> {{i.calvings}} </td>
     </tr>        
     {% endfor %}  
       </tbody>

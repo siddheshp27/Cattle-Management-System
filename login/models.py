@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -15,7 +16,8 @@ class Animaldata(models.Model):
      breed=models.CharField(max_length=30)
      stage= models.CharField(max_length=20)
      calvings= models.IntegerField(default=0)
-     # heat=models.DateField()
+     # heat=models.DateField(default=datetime.date(2013,12,12))
+     
 
 class Dailydata(models.Model):
      date= models.DateField()

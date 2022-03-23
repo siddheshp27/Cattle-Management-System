@@ -1,5 +1,18 @@
 {%extends 'navbar.html'%}
 {% block CSS %}
+/*New Registration*/
+    .new-regis {
+      padding:5px 0;
+      font-weight: bold;
+      font-size: medium;
+      text-align:center;
+      background-color: #f3f3f3
+    }
+
+    .newbutton {
+      margin-left:15px;
+    }
+
 /*[ Table ]*/
     .table100 {
       background-color: #fff;
@@ -86,6 +99,10 @@
 
 {%endblock%}
 {% block body %}
+<!--new registration button-->
+<div class="new-regis">
+  For new registration of cattle click on:<a href="AnimalRegistration"> <button type="button" class="newbutton btn-sm btn-warning">New Registration</button></a>
+</div>
 <!--data list-->
 <div class="table100 ver1 m-b-110">
     <div class="table100-head">
@@ -98,7 +115,7 @@
                 <th class="cell100 column4">Sex</th>
                 <th class="cell100 column5">Breed</th>
                 <th class="cell100 column6">Stage</th>
-                <th class="cell100 column7">Missed <br> Heat</th>
+                <th class="cell100 column7">Submit</th>
               </tr>
         </thead>
       </table>
@@ -125,17 +142,11 @@
                 <option value="4">Adult</option>
               </select>
             </td>
+            
             <td class="cell100 column7">
-              {% if i.sex == "FEMALE" %}
-                {% if  i.stage == "Adult" %}
-                    <input name="Missed Heat" id="Missed Heat"  class="form-control form-control-sm milk" type="date" placeholder="" aria-label="default input example">
-                 {% else %}
-                      N.A.
-                {% endif %}
-                {% else %}
-                 N.A.
-              {% endif %}
-              </td>
+              <input class="btn btn-primary my-3 mx-4" name="Submit" id="Submit" type="submit" value="{{forloop.counter}}">
+            </td>
+
             </form>
           </tr>
           {% endfor %}
@@ -143,5 +154,4 @@
       </table>
     </div>
   </div>
-  <input class="btn btn-primary my-3 mx-4" type="submit" value="Save Changes">
 {% endblock %}

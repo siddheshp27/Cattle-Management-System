@@ -35,4 +35,5 @@ urlpatterns = [
     path('Morning', views.morning, name="Morning"),
     path('Afternoon', views.afternoon, name="Afternoon"),
     path('Evening', views.evening, name="Evening"),
+    path('HeatPeriod', views.heat, name="HeatPeriod"),
 ]
