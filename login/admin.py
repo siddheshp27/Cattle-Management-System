@@ -10,7 +10,7 @@ class Userdetails(admin.ModelAdmin):
 @admin.register(Animaldata)
 
 class Animaldata(admin.ModelAdmin):
-    list_display = ['Eartag','DOB','sex','breed','stage','calvings']
+    list_display = ['Eartag','DOB','sex','breed','stage','calvings','heat']
 
 @admin.register(Dailydata)
 
