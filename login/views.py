@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Userdata
-from .models import Animaldata,Dailydata,Heatdata
+from .models import Animaldata,Dailydata,Heatdata,Milk
 from django.contrib import messages
 from datetime import datetime,timedelta
 
@@ -70,9 +70,10 @@ def home(request):
          totallst.append(totemilk)
          totmilk+=totemilk
          ec+=1
-       print(ec)    
        storeall=tags
-       parmas={"storeall" : storeall,"totallst":totallst,"varint":0} 
+       acc=Accounts(date=finddate,totalmilk=totmilk)
+       acc.save()
+       parmas={"storeall" : storeall,"totallst":totallst} 
        return render(request, 'fetch.html',parmas)  
        
    return render(request, 'home.html')
@@ -110,13 +111,7 @@ def alldata(request):
     parmas={'storeall': storeall}
     if request.method == "POST" :
         HEAT_str = request.POST['Missed Heat']
-        count=request.POST['Submit']
-        
-
-
-        
-    
-    
+        count=request.POST['Submit']    
     return render(request,'AllData.html',parmas) 
 
 def milking(request):
@@ -153,7 +148,6 @@ def bulls(request):
 
 def female(request):
     sort=Animaldata.objects.values('sex') 
-    print(sort)  
     s={items['sex'] for items in sort}
     for i in s:
         storeall =Animaldata.objects.filter(sex="FEMALE")
@@ -244,7 +238,6 @@ def heat(request):
      tag=tagtemp["Eartag"]
      breed_=breedtemp["breed"]
      date =request.POST['Date'] 
-     print(date)
      heat_ = Heatdata(eartag=tag,date=date,breed=breed_)
      heat_.save()
      return redirect('/HeatPeriod')
@@ -262,7 +255,6 @@ def heatcalc(request) :
     date2=[]
     Tdate2=[]
     storeall={"storeall" :  [] }
-    # print(type(storeall))
     TEartag=Heatdata.objects.values('eartag')
     Tbreed=Heatdata.objects.values('breed')
     store=Heatdata.objects.values('date')
@@ -277,31 +269,29 @@ def heatcalc(request) :
         app2=str(Tapp2) 
         Tdate2.append(app2)
     
-    # print(date1)    
     Eartag=[items['eartag'] for items in TEartag]
     breed=[items['breed'] for items in Tbreed]
     
     parmas={"Eartag":[],"breed":[],"date1":[],"date2":[]}
     today=datetime.now()
-    # for i in Tstoredict['Eartag']:
-    #  print(i)
 
     for i in data:
      s.append(str(i))
-    # print(s)
+    
     for i in s:
         Heat.append(datetime.strptime(i,'%Y-%m-%d'))
-    # print(Heat)
+
     for i in Heat:
         res=today-i
         resf=res.total_seconds()/86400
         Diff.append(resf)
-    # print(Diff) 
+
     Tstoredict={"Eartag":Eartag,"breed":breed,"datediff":Diff,"date":data}
     countstore=0
     temp=Tstoredict['Eartag'][0]
-    # print(temp)
+
     for i in Tstoredict['datediff']:
+
         if i<25 and i>17 :
          class parmas :
           Eartag=(Tstoredict['Eartag'][countstore])
@@ -309,25 +299,8 @@ def heatcalc(request) :
           date1 = Tdate1[countstore]
           date2 = Tdate2[countstore]
          storeall["storeall"].append(parmas)
- 
-        #  parmas["Eartag"]=(Tstoredict['Eartag'][countstore])
-        #  parmas["breed"]= Tstoredict['breed'][countstore]
-        #  parmas["date1"]= date1[countstore]
-        #  parmas["date2"]= date2[countstore]
-         
-
-
+        
         countstore +=1
-    
-
-    # Heat= datetime.strptime(s,'%Y-%m-%d')
-    # print(type(data[1]))
-    # print(type(today))
-    # res=today-Heat
-    # print(type(res))
-    # print(res)
-    # resf=res.seconds/60
-    # print(storeall['storeall'])
     return render(request, 'HeatDisplay.html',storeall)
  
 def fetchacc(request) :

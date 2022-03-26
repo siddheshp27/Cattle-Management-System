@@ -31,4 +31,10 @@ class Heatdata(models.Model):
      eartag= models.IntegerField()
      breed=models.CharField(max_length=30)
 
+
+class Milk(models.Model):
+     totalmilk= models.IntegerField()
+     date= models.DateField()
+     
+
   
