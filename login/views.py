@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Userdata
-from .models import Animaldata,Dailydata,Heatdata,Milk
+from .models import Animaldata,Dailydata,Heatdata,Milk,Account
 from django.contrib import messages
 from datetime import datetime,timedelta
 
@@ -13,20 +13,19 @@ def register(request):
        conf_pass = request.POST['con_pass']
        if Userdata.objects.filter(username=username).exists():
            messages.error(request, 'This username is already taken')
-           return redirect('Registration')
+           return redirect('/Registration')
        elif Userdata.objects.filter(email=email).exists():
            messages.error(request, 'This email is already taken')
-           return redirect('Registration')
+           return redirect('/Registration')
        elif(password != conf_pass):
            messages.error(request, 'Please enter same password')
-           return redirect('Registration')
+           return redirect('/Registration')
        else:
            students = Userdata(username=username, email=email, password=password, conf_pass=conf_pass)
            students.save()
            messages.success(request, "Register Successfully")
            return redirect('/')
     return render(request, 'registration.html')
-
 
 def login(request):
     if request.method == "POST":
@@ -71,7 +70,7 @@ def home(request):
          totmilk+=totemilk
          ec+=1
        storeall=tags
-       acc=Accounts(date=finddate,totalmilk=totmilk)
+       acc=Milk(date=finddate,totalmilk=totmilk)
        acc.save()
        parmas={"storeall" : storeall,"totallst":totallst} 
        return render(request, 'fetch.html',parmas)  
@@ -79,10 +78,10 @@ def home(request):
    return render(request, 'home.html')
 
 def reccomandation(request):
-    return render(request, 'reccomantion.html')
+    return render(request, 'recommendation.html')
 
 def schemes(request):
-    return render(request, 'govtschemes.html')
+    return render(request, 'govtscheme.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -155,8 +154,22 @@ def female(request):
     return render(request,'Heat.html' ,parmas)
 
 def account(request):
-  
-    return render(request, 'account.html')
+    store=Milk.objects.values('totalmilk')
+    Today=store.filter(date=datetime.now())
+    Tmilk={items['totalmilk'] for items in Today}
+    storeall=max(Tmilk)
+
+    parmas={"storeall":storeall}
+    if request.method=="POST" :
+        Earnings_bulls=request.POST['Ebull']
+        Earnings_extra=request.POST['Eearn']
+        Expenditure_Feeder=request.POST['Feeder']
+        Expenditure_Medical=request.POST['Medical']
+        Expenditure_Labour=request.POST['Labour']
+        Expenditure_Eexpenses=request.POST['Eexpenses']   
+        acc=Account(Earnings_bulls=Earnings_bulls,Earnings_extra=Earnings_extra,Expenditure_Feeder=Expenditure_Feeder,Expenditure_Medical=Expenditure_Medical,Expenditure_Labour=Expenditure_Labour,Expenditure_Eexpenses=Expenditure_Eexpenses,date=datetime.now(),totalmilk=storeall)
+        acc.save()
+    return render(request, 'account.html',parmas)
 
 def morning(request):
     sort=Animaldata.objects.values('stage') 
@@ -231,7 +244,8 @@ def heat(request):
     tags=storeall.values('Eartag')
     breed_=storeall.values('breed')
     if request.method=="POST": 
-     j=request.POST['submit']   
+     j=request.POST['submit'] 
+     print(j)  
      z=int(j)
      tagtemp=tags[(z-1)]      
      breedtemp=breed_[(z-1)]      
@@ -304,5 +318,5 @@ def heatcalc(request) :
     return render(request, 'HeatDisplay.html',storeall)
  
 def fetchacc(request) :
-    return render(request,'fetchacc.html')    
+  return render(request,'fetchacc.html')    
 

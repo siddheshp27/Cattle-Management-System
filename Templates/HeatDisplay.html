@@ -19,26 +19,30 @@
 
     th,
     td {
-      font-weight: unset;
+      font-weight: bold;
       padding-right: 10px;
     }
 
     .column1 {
-      width: 8%;
+      width: 12%;
       padding-left: 40px;
     }
 
     .column2 {
-      width: 10%;
-    }
-
-    .column3 {
-      width: 9%;
+      widt22%;
     }
 
     .column4 {
-      width: 9%;
-    }    
+      width: 22%;
+    }
+    
+    .column5 {
+      width: 22%;
+    }
+
+    .column6 {
+      width: 22%;
+    }
     
     .table100-head {
       table-layout: fixed;
@@ -85,9 +89,6 @@
 
 {%endblock%}
 {% block body %}
-<div class="heading container-fluid">
-<h3>Missed Heat Period Entry</h3>
-</div>
 <!--data list-->
 <div class="table100 ver1 m-b-110">
     <div class="table100-head">
@@ -96,9 +97,9 @@
           <tr class="row100 head">
             <th class="cell100 column1">Sr. No.</th>
             <th class="cell100 column2">Eartag Number</th>
-            <th class="cell100 column3">Breed</th>
-            <th class="cell100 column4">Starting Date</th>
-            <th class="cell100 column5">End Date</th>
+            <th class="cell100 column4">Breed</th>
+            <th class="cell100 column5">Starting Date</th>
+            <th class="cell100 column6">End Date</th>
           </tr>
         </thead>
       </table>
@@ -111,9 +112,9 @@
             <tr class="row100 body">
             <td class="cell100 column1">{{forloop.counter}}</td>
             <td class="cell100 column2" >{{i.Eartag}}</td>
-            <td class="cell100 column3" >{{i.breed}}</td>
-            <td class="cell100 column4" >{{i.date1}}</td>
-            <td class="cell100 column5" >{{i.date2}}</td>
+            <td class="cell100 column4" >{{i.breed}}</td>
+            <td class="cell100 column5" >{{i.date1}}</td>
+            <td class="cell100 column6" >{{i.date2}}</td>
            
           {% endfor %}
            </tbody>

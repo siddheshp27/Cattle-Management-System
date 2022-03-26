@@ -94,7 +94,7 @@
 {% block body %}
 <div class="heading container-fluid">
   <div class="alert alert-dark alert-dismissible fade show" role="alert">
-    <strong>Instructions:</strong> Please fill out each box submit it and then fill the next cow's box.
+    <strong>Instructions:</strong> Please fill out each box, submit it and then fill the next cow's box.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 </div>
@@ -108,7 +108,7 @@
             <th class="cell100 column2">Eartag Number</th>
             <th class="cell100 column3">Breed</th>
             <th class="cell100 column4">Missed Heat<br>Date</th>
-            <th class="cell100 column5">Submit</th>
+            <th class="cell100 column5"></th>
           </tr>
         </thead>
       </table>
@@ -125,7 +125,7 @@
             <td class="cell100 column2" >{{i.Eartag}}</td>
             <td class="cell100 column3" >{{i.breed}}</td>
             <td class="cell100 column4"><input name="Date" id="Date"  class="form-control form-control-sm milk" type="date" placeholder="" aria-label="default input example" required></td> 
-            <td class="cell100 column5"><input class="btn btn-primary my-3" name="submit" id="submit" type="submit"  value="{{forloop.counter}}" ></td>
+            <td class="cell100 column5"><button class="btn btn-primary my-3"  type="submit"><input class="visually-hidden" name="submit" id="submit" value="{{forloop.counter}}">Submit</button></td>
           </form>
           {% endfor %}
            </tbody>

@@ -108,10 +108,10 @@
                   <form class="row g-3 py-1" method="POST">
                     {% csrf_token %}
                     <div class="col-auto">
-                      <input type="date" class="form-control" id="FindDate" name="FindDate" >
+                      <input type="date" class="form-control" id="FindDate" name="FindDate" required >
                     </div>
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-outline-dark mb-3" value="Find Entry" required> Fetch
+                      <button type="submit" class="btn btn-outline-dark mb-3" value="Find Entry" > Fetch
                     </div>
                 </form>
                   <div class="dropup">

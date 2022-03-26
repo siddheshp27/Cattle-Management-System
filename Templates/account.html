@@ -23,21 +23,23 @@ body {
 
 {%endblock%}
 {% block body %}
-<form>
+<form action="#" method="POST">
+  
+  {% csrf_token %}
 <div class="vertical">
 
 <div class="box container-sm border border-dark rounded-3">
     <h3 class="my-2">Earnings:</h3>
       <hr>
-        <h6 class="">Total Milk Produced: &nbsp&nbsp </h6>
+        <h6 class="">Total Milk Produced: {{storeall}}  L &nbsp&nbsp </h6>
         <h6 class="py-2"> Rate of Milk per Litre: &nbsp&nbspRs. 37.25</h6>
         <div class="input-group mb-4 mt-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Earning from Bulls</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Ebull" name="Ebull" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Extra Earnings</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Eearn" name="Eearn" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
   </div>
   <div class="box container-sm mx-5 border border-dark rounded-3">
@@ -45,19 +47,19 @@ body {
     <hr>
         <div class="input-group mb-3 mt-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Feeder Expense</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Feeder" name="Feeder" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Medical Bill</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Medical" name="Medical" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Labour Cost</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Labour" name="Labour" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Extra Expenses</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="Eexpenses" name="Eexpenses" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
   </div>
   

@@ -1,24 +1,11 @@
+{% extends 'navbar.html' %}
 {% block body %}
-<div class="table-responsive">
-    <table class="table table-striped table-md">
-      <thead>
-        <tr>
-          <th scope="col">Eartag No.   </th>
-          <th scope="col">Date Of Birth</th>
-          <th scope="col">Breed</th>
-          <th scope="col">No. Of Calvings</th>
-        </tr>
-      </thead>
-      <tbody>
-    {% for i in storeall  %}
-      <td> {{i.Eartag}} </td>
-      <td> {{i.DOB}} </td>
-      <td>  {{i.breed}} </td>
-      <td> {{i.calvings}} </td>
-    </tr>        
-    {% endfor %}  
-      </tbody>
-    </table>
-    {% block Register %} {% endblock %}
-  </div>
-{% endblock %}
+{% for i in storeall %}
+{{i}}
+{% for j in totallst %}
+{% if forloop.parentloop.counter == forloop.counter %}
+{{j}}
+{% endif %}
+{% endfor %} 
+{% endfor %} 
+{% endblock  %} 

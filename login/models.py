@@ -35,6 +35,17 @@ class Heatdata(models.Model):
 class Milk(models.Model):
      totalmilk= models.IntegerField()
      date= models.DateField()
+
+class Account(models.Model):
+     date= models.DateField()
+     totalmilk= models.IntegerField()
+     Earnings_bulls= models.IntegerField()
+     Earnings_extra= models.IntegerField()
+     Expenditure_Feeder= models.IntegerField()
+     Expenditure_Medical= models.IntegerField()
+     Expenditure_Labour= models.IntegerField()
+     Expenditure_Eexpenses= models.IntegerField()
+
      
 
   

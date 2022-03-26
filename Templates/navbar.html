@@ -65,16 +65,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown" href="/Accounts" data-bs-toggle="dropdown">Account</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Find entry of a particular date:
-                <form class="row g-3 py-1" method="POST">
-                  {% csrf_token %}
-                  <div class="col-auto">
-                    <input type="date" class="form-control" id="FindDate" name="FindDate" >
-                  </div>
-                  <div class="col-auto">
-                    <button type="submit" class="btn btn-dark" value="Find Entry"> Fetch
-                  </div>
-                </form>
+              <li><a class="dropdown-item" href="#">Find Entry of a Particular Date
                 </a>
               </li>
               <li><hr class="dropdown-divider"></li>
@@ -91,10 +82,6 @@
             <img src="https://i.ibb.co/wC6Y1mQ/pp.png" width="32" class="rounded-circle"></img>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="myprofile.html">My Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
             <a href="/"><button type="submit" class="logout btn btn-danger">Log Out</button></a>
           </ul>
         </div>

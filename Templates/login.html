@@ -43,20 +43,13 @@
       width: 20%;
     }
 
-    #signup {
-      padding-right: 102px;
-      padding-top: 10px;
-      color: white;
-      font-size: 18px;
+    .signup {
+      color:blue;
+      font-style: italic;
     }
 
-    #signup a {
-      color: #3b86f7;
-      text-decoration: underline;
-    }
-
-    #signup a:hover {
-      color: white;
+    .signup:hover {
+      color: #75c77f;
     }
 
     #submits {
@@ -81,19 +74,23 @@
       position:relative;
       float:right;
     }
+    .lines {
+      color:white;
+      font-style: italic;
+    }
   </style>
 </head>
 
 <body>
 <!--Alert -->
-                  {% for message in messages %}
-                  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                     {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                      <span aria_hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  {% endfor %}
+   {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria_hidden="true">&times;</span>
+      </button>
+      </div>
+      {% endfor %}
   <div id="about">
     <a class="nav-link" href="about.html" target="_blank">
       <h3>About</h3>
@@ -123,7 +120,7 @@
         </div>
         <br>
         <div>
-          <b>Don't have an account? <a href="Registration" class="text/dark">Sign Up</a></b>
+          <center><b><span class="lines">Don't have an account?&nbsp&nbsp</span> <a href="Registration" class="signup">Sign Up</a></b></center>
         </div>
         <input id="submits" class="btn btn-lg btn-primary" type="submit" value="Submit">
       </form>
