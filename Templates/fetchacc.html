@@ -1,0 +1,47 @@
+{%extends 'navbar.html'%}
+{% block CSS %}
+
+body {
+  background-color: #f5f8fa;
+}
+
+.vertical {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 90px;
+    margin-right: 50px;
+}
+
+.box {
+    background-color: white;
+  }
+
+{%endblock%}
+{% block body %}
+<div class="vertical">
+<div class="box container-sm border border-dark rounded-3">
+    <h3 class="my-2">Earnings:</h3>
+      <hr>
+        <h6 class="py-2"> Total Milk Produced: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Rate of Milk per Litre: &nbsp&nbspRs. 37.25</h6>
+        <h6 class="py-2"> Earning from Bulls: &nbsp&nbsp</h6>
+        <h6 class="py-2"> Extra Earnings: &nbsp&nbsp</h6>
+  </div>
+  <div class="box container-sm mx-5 border border-dark rounded-3">
+    <h3 class="my-2">Expenditure:</h3>
+        <hr>
+        <h6 class="py-2"> Feeder Expense: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Medical Bill: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Labour Cost: &nbsp&nbsp</h6>
+        <h6 class="py-2"> Extra Expenses: &nbsp&nbsp</h6>
+  </div>
+</div>
+<div class="box container-sm my-5 border border-dark rounded-3">
+    <h3 class="my-2">Today's Final Account:</h3>
+        <hr>
+        <h6 class="py-2"> Cost of Total Milk: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Total Earnings: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Total Expenditure: &nbsp&nbsp</h6>
+        <h6 class="py-2"> Total Profit: &nbsp&nbsp</h6>
+</div>
+{% endblock %}

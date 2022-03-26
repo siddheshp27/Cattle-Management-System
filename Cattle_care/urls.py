@@ -36,4 +36,6 @@ urlpatterns = [
     path('Afternoon', views.afternoon, name="Afternoon"),
     path('Evening', views.evening, name="Evening"),
     path('HeatPeriod', views.heat, name="HeatPeriod"),
+    path('HeatDisplay', views.heatcalc, name="HeatDisplay"),
+    path('FetchAccounts', views.fetchacc, name="FetchAccounts"),
 ]

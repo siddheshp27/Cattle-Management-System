@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Userdata
-from .models import Animaldata,Dailydata
+from .models import Animaldata,Dailydata,Heatdata
 from django.contrib import messages
-from datetime import datetime
+from datetime import datetime,timedelta
+
 
 def register(request):
     if request.method == "POST":
@@ -92,12 +93,14 @@ def animal_registration(request):
         sex = request.POST['sex']
         breed = request.POST['boc']
         stage = request.POST['stage']
-        calvings = request.POST['present_address']
+        calving = request.POST['present_address']
+        if calving == '' :
+         calving = 0 
         if Animaldata.objects.filter(Eartag=Eartag).exists():
             messages.error(request, 'This Eartag is already registered')
             
         else:
-            animals = Animaldata(Eartag=Eartag, DOB=DOB, sex=sex, breed=breed, stage=stage, calvings=calvings)
+            animals = Animaldata(Eartag=Eartag, DOB=DOB, sex=sex, breed=breed, stage=stage, calvings=calving)
             animals.save()
             messages.success(request, "register successfully")
    return render(request,'animal_registration.html')
@@ -111,10 +114,7 @@ def alldata(request):
         
 
 
-        # Heat= datetime.strptime(HEAT_str,'%Y-%m-%d')
-        # today=datetime.now()
-        # print(type(Heat))
-        # print(today-Heat)
+        
     
     
     return render(request,'AllData.html',parmas) 
@@ -235,17 +235,101 @@ def heat(request):
     for i in s:
         storeall =Animaldata.objects.filter(stage="Adult")
     tags=storeall.values('Eartag')
+    breed_=storeall.values('breed')
     if request.method=="POST": 
      j=request.POST['submit']   
      z=int(j)
      tagtemp=tags[(z-1)]      
+     breedtemp=breed_[(z-1)]      
      tag=tagtemp["Eartag"]
+     breed_=breedtemp["breed"]
      date =request.POST['Date'] 
      print(date)
-    #  milk = Dailydata(eartag=tag,date=date,totalmilk=milk,production="Morning")
-    #  milk.save()
-     return redirect('/HeatPeriod') 
-    
+     heat_ = Heatdata(eartag=tag,date=date,breed=breed_)
+     heat_.save()
+     return redirect('/HeatPeriod')
     parmas={'storeall': storeall}
     return render(request, 'Heat.html',parmas)
+ 
+
+
+def heatcalc(request) :
+    s=[]
+    Heat=[]
+    Diff=[]
+    date1=[]
+    Tdate1=[]
+    date2=[]
+    Tdate2=[]
+    storeall={"storeall" :  [] }
+    # print(type(storeall))
+    TEartag=Heatdata.objects.values('eartag')
+    Tbreed=Heatdata.objects.values('breed')
+    store=Heatdata.objects.values('date')
+    data=[items['date'] for items in store]
+    for i in data:
+        Tapp1= i + timedelta(days=18)
+        app1=str(Tapp1)
+        Tdate1.append(app1)
+    
+    for i in data:
+        Tapp2= i + timedelta(days=24)
+        app2=str(Tapp2) 
+        Tdate2.append(app2)
+    
+    # print(date1)    
+    Eartag=[items['eartag'] for items in TEartag]
+    breed=[items['breed'] for items in Tbreed]
+    
+    parmas={"Eartag":[],"breed":[],"date1":[],"date2":[]}
+    today=datetime.now()
+    # for i in Tstoredict['Eartag']:
+    #  print(i)
+
+    for i in data:
+     s.append(str(i))
+    # print(s)
+    for i in s:
+        Heat.append(datetime.strptime(i,'%Y-%m-%d'))
+    # print(Heat)
+    for i in Heat:
+        res=today-i
+        resf=res.total_seconds()/86400
+        Diff.append(resf)
+    # print(Diff) 
+    Tstoredict={"Eartag":Eartag,"breed":breed,"datediff":Diff,"date":data}
+    countstore=0
+    temp=Tstoredict['Eartag'][0]
+    # print(temp)
+    for i in Tstoredict['datediff']:
+        if i<25 and i>17 :
+         class parmas :
+          Eartag=(Tstoredict['Eartag'][countstore])
+          breed = Tstoredict['breed'][countstore]
+          date1 = Tdate1[countstore]
+          date2 = Tdate2[countstore]
+         storeall["storeall"].append(parmas)
+ 
+        #  parmas["Eartag"]=(Tstoredict['Eartag'][countstore])
+        #  parmas["breed"]= Tstoredict['breed'][countstore]
+        #  parmas["date1"]= date1[countstore]
+        #  parmas["date2"]= date2[countstore]
+         
+
+
+        countstore +=1
+    
+
+    # Heat= datetime.strptime(s,'%Y-%m-%d')
+    # print(type(data[1]))
+    # print(type(today))
+    # res=today-Heat
+    # print(type(res))
+    # print(res)
+    # resf=res.seconds/60
+    # print(storeall['storeall'])
+    return render(request, 'HeatDisplay.html',storeall)
+ 
+def fetchacc(request) :
+    return render(request,'fetchacc.html')    
 

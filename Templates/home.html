@@ -6,7 +6,7 @@
     /*slider*/
 
     .slider-container {
-      background-color: #0084A8;
+      background-color: #6096BA;
     }
 
     .card-group {
@@ -15,10 +15,6 @@
 
     .card {
       margin: 0 2em;
-      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-      border: none;
-      border-radius: 0;
-      background-color: #96D0A0;
     }
     
     .card-title {
@@ -35,15 +31,29 @@
       text-decoration: none;
     }
 
+    p {
+      font-style: italic;
+    }
+
+    .heat1 {
+      display: flex;
+      margin-left: 37px;
+    } 
+
+    .heat2 {
+      display: flex;
+      padding-top: 7px;
+      margin-left: 30px;
+    }
+
     .card-text {
       text-align: center;
       padding-bottom: 30px;
     }
 
-
     .card-text2 {
       text-align: center;
-      padding-bottom: 30px;
+      padding-bottom: 28px;
     }
 
     .carousel-inner {
@@ -81,7 +91,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="card-group">
-            <div class="card card1">
+            <div class="card card1 shadow-lg bg-body rounded-3">
               <div class="card-body">
                 <h3 class="card-title"><a href="/AllData">ALL CATTLE</a></h3>
                 <br>
@@ -89,24 +99,23 @@
                   datalist.</p>
               </div>
             </div>
-            <div class="card card2">
+            <div class="card card2 shadow-lg bg-body rounded-3">
               <div class="card-body">
                 <h3 class="card-title">MILKING COWS</h3>
                 <br>
                 <class="card-text">
-                  Find entry of a particular date:
+                  <i><p1>Find entry of a particular date:</p1></i>
                   <form class="row g-3 py-1" method="POST">
                     {% csrf_token %}
                     <div class="col-auto">
-                      <label for="inputPassword2" class="visually-hidden">Password</label>
                       <input type="date" class="form-control" id="FindDate" name="FindDate" >
                     </div>
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3" value="Find Entry"> Fetch
+                      <button type="submit" class="btn btn-outline-dark mb-3" value="Find Entry" required> Fetch
                     </div>
-                  </form>
-                  <div class="dropdown">
-                    Enter new milk data:<a class="btn btn-dark dropdown-toggle mx-2" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                </form>
+                  <div class="dropup">
+                    <i><p1>New entry of milk data:</p1></i><a class="btn btn-sm btn-dark dropdown-toggle mx-3" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                       Production Batches
                     </a>                  
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -115,9 +124,10 @@
                       <li><a class="dropdown-item" href="/Evening">Evening Production</a></li>
                     </ul>
                   </div>
+                </form>
               </div>
             </div>
-            <div class="card card3">
+            <div class="card card3 shadow-lg bg-body rounded-3">
               <div class="card-body">
                 <h3 class="card-title"><a href="/Pregnant">PREGNANT COWS</a></h3>
                 <br>
@@ -128,7 +138,7 @@
         </div>
         <div class="carousel-item">
           <div class="card-group">
-            <div class="card">
+            <div class="card shadow-lg bg-body rounded-3">
               <div class="card-body">
                 <h3 class="card-title"><a href="/Calf">CALVINGS</a></h3>
                 <br>
@@ -136,7 +146,7 @@
                 <br>
               </div>
             </div>
-            <div class="card">
+            <div class="card shadow-lg bg-body rounded-3">
               <div class="card-body">
                 <h3 class="card-title"><a href="/Bulls">BULLS (MALES)</a></h3>
                 <br>
@@ -144,13 +154,18 @@
                 <br>
               </div>
             </div>
-            <div class="card">
+            <div class="card shadow-lg bg-body rounded-3">
               <div class="card-body">
-                <h3 class="card-title"><a href="Accounts">ACCOUNTS</a></h3>
+                <h3 class="card-title">HEAT PERIOD</h3>
                 <br>
-                <p class="card-text2">You can find accounts of your trade. A track of your investment and profits will be
-                  kept here.</p>
-                <br>
+              <div class="heat1">
+                <p> Enter Missed Heat Period of cow:</p>
+                <a class="btn btn-sm btn-dark mx-2 mb-3" href="/HeatPeriod" role="button">Enter</a>
+                  </div>
+                <div class="heat2 mt-3">
+                    <p> Predicted date of next Heat Period:</p>
+                    <a class="btn btn-sm btn-dark mx-2 mb-3" href="/HeatDisplay" role="button">Check</a>
+                </div>
               </div>
             </div>
           </div>

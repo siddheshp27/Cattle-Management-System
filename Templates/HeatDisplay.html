@@ -1,5 +1,12 @@
 {%extends 'navbar.html'%}
 {% block CSS %}
+/*Title*/
+.heading {
+  background: #F7F7F7;
+  text-align: center;
+  margin: 0;
+  padding: 0.25%;
+}
 /*[ Table ]*/
     .table100 {
       background-color: #fff;
@@ -17,22 +24,22 @@
     }
 
     .column1 {
-      width: 15%;
-      padding-left: 100px;
+      width: 8%;
+      padding-left: 40px;
     }
 
     .column2 {
-      width: 25.6%;
+      width: 10%;
     }
 
     .column3 {
-      width: 25.6%;
+      width: 9%;
     }
 
     .column4 {
-        width: 25.6%;
-    }
-
+      width: 9%;
+    }    
+    
     .table100-head {
       table-layout: fixed;
       border-collapse: collapse;
@@ -48,10 +55,9 @@
       padding-bottom: 15px;
     }
 
-    .earnings {
+    .milk {
       width: 42%;
       margin-left: 30%;
-      text-align: center;
     }
 
     /*[ Ver1 ]*/
@@ -79,17 +85,21 @@
 
 {%endblock%}
 {% block body %}
+<div class="heading container-fluid">
+<h3>Missed Heat Period Entry</h3>
+</div>
 <!--data list-->
 <div class="table100 ver1 m-b-110">
     <div class="table100-head">
       <table>
         <thead>
-            <tr class="row100 head">
-                <th class="cell100 column1">Sr. <br>No.</th>
-                <th class="cell100 column2">Eartag <br>Number</th>
-                <th class="cell100 column3">Date of<br>Birth</th>
-                <th class="cell100 column4">Breed</th>
-              </tr>
+          <tr class="row100 head">
+            <th class="cell100 column1">Sr. No.</th>
+            <th class="cell100 column2">Eartag Number</th>
+            <th class="cell100 column3">Breed</th>
+            <th class="cell100 column4">Starting Date</th>
+            <th class="cell100 column5">End Date</th>
+          </tr>
         </thead>
       </table>
     </div>
@@ -100,14 +110,15 @@
           {% for i in storeall  %}
             <tr class="row100 body">
             <td class="cell100 column1">{{forloop.counter}}</td>
-            <td class="cell100 column2">{{i.Eartag}}</td>
-            <td class="cell100 column3">{{i.DOB}}</td>
-            <td class="cell100 column4">{{i.breed}}</td>
-            {% csrf_token %}           
-          </tr>
+            <td class="cell100 column2" >{{i.Eartag}}</td>
+            <td class="cell100 column3" >{{i.breed}}</td>
+            <td class="cell100 column4" >{{i.date1}}</td>
+            <td class="cell100 column5" >{{i.date2}}</td>
+           
           {% endfor %}
            </tbody>
       </table>
     </div>
   </div>
+
 {% endblock %}

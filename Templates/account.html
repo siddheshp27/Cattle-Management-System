@@ -1,7 +1,68 @@
 {%extends 'navbar.html'%}
 {% block CSS %}
 
+body {
+  background-color: #f5f8fa;
+}
+
+.vertical {
+    display: flex;
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-right: 50px;
+}
+
+.box {
+  background-color: white;
+}
+
+.button {
+  position: relative;
+  float: center;
+}
+
 {%endblock%}
 {% block body %}
+<form>
+<div class="vertical">
 
+<div class="box container-sm border border-dark rounded-3">
+    <h3 class="my-2">Earnings:</h3>
+      <hr>
+        <h6 class="">Total Milk Produced: &nbsp&nbsp </h6>
+        <h6 class="py-2"> Rate of Milk per Litre: &nbsp&nbspRs. 37.25</h6>
+        <div class="input-group mb-4 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Earning from Bulls</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Extra Earnings</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+  </div>
+  <div class="box container-sm mx-5 border border-dark rounded-3">
+    <h3 class="my-2">Expenditure:</h3>
+    <hr>
+        <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Feeder Expense</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Medical Bill</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Labour Cost</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Extra Expenses</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+  </div>
+  
+
+</div>
+<center><input class="button btn btn-primary my-5" type="submit" value="Submit"></center>
+</form>
 {% endblock %}
