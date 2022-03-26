@@ -16,7 +16,6 @@ class Animaldata(models.Model):
      breed=models.CharField(max_length=30)
      stage= models.CharField(max_length=20)
      calvings= models.IntegerField(default=0)
-     heat=models.DateField()
      
 
 class Dailydata(models.Model):
@@ -24,5 +23,12 @@ class Dailydata(models.Model):
      eartag= models.IntegerField()
      totalmilk= models.IntegerField()
      production=models.CharField(max_length=30)
+     calvings= models.IntegerField(default=0)
+     
+
+class Heatdata(models.Model):
+     date= models.DateField()
+     eartag= models.IntegerField()
+     breed=models.CharField(max_length=30)
 
   

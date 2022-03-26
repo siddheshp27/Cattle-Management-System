@@ -161,12 +161,8 @@ def female(request):
     return render(request,'Heat.html' ,parmas)
 
 def account(request):
-    sort=Animaldata.objects.values('stage')   
-    s={items['stage'] for items in sort}
-    for i in s:
-        storeall =Animaldata.objects.filter(stage="Milking")
-        parmas={'storeall': storeall}
-    return render(request, 'milking.html',parmas)
+  
+    return render(request, 'account.html')
 
 def morning(request):
     sort=Animaldata.objects.values('stage') 

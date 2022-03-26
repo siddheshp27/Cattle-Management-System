@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Userdata,Animaldata,Dailydata
+from .models import Userdata,Animaldata,Dailydata,Heatdata
 # Register your models here.
 
 @admin.register(Userdata)
@@ -10,9 +10,14 @@ class Userdetails(admin.ModelAdmin):
 @admin.register(Animaldata)
 
 class Animaldata(admin.ModelAdmin):
-    list_display = ['Eartag','DOB','sex','breed','stage','calvings','heat']
+    list_display = ['Eartag','DOB','sex','breed','stage','calvings']
 
 @admin.register(Dailydata)
 
 class Dailydata(admin.ModelAdmin):
     list_display = ['eartag','date','totalmilk','production']
+
+@admin.register(Heatdata)
+
+class Dailydata(admin.ModelAdmin):
+    list_display = ['eartag','date','breed']
