@@ -1,4 +1,5 @@
 {%extends 'navbar.html'%}
+{%block title %}Cattle Care | All Cattle {% endblock %}
 {% block CSS %}
 /*New Registration*/
     .new-regis {
@@ -30,20 +31,20 @@
     }
 
     .column1 {
-      width: 4%;
+      width: 8%;
       padding-left: 20px;
     }
 
     .column2 {
-      width: 19.2%;
+      width: 18.4%;
     }
 
     .column3 {
-      width: 19.2%;
+      width: 18.4%;
     }
 
     .column4 {
-        width: 9%;
+        width: 18.4%;
     }
 
     .column5 {
@@ -51,7 +52,7 @@
     }
     
     .column6 {
-      width: 19.2%;
+      width: 18.4%;
   }
 
     .table100-head {
@@ -73,7 +74,7 @@
 
     .table100.ver1 th {
       font-weight:bold;
-      font-size: 18px;
+      font-size: 20px;
       color: #fff;
       line-height: 1.4;
       background-color: #96D0A0;
@@ -82,7 +83,7 @@
 
     .table100.ver1 td {
       font-weight:bold;
-      font-size: 15px;
+      font-size: 16px;
       color: #808080;
       line-height: 1.4;
       text-align: center;
@@ -97,6 +98,9 @@
       float: right;
     }
 
+    .last {
+      margin-top:-0.25%;
+    }
 {%endblock%}
 {% block body %}
 <!--new registration button-->
@@ -115,7 +119,6 @@
                 <th class="cell100 column4">Sex</th>
                 <th class="cell100 column5">Breed</th>
                 <th class="cell100 column6">Stage</th>
-                <th class="cell100 column7">Submit</th>
               </tr>
         </thead>
       </table>
@@ -130,28 +133,13 @@
             <td class="cell100 column2">{{i.Eartag}}</td>
             <td class="cell100 column3">{{i.DOB}}</td> 
             <td class="cell100 column4">{{i.sex}}</td>
-            <td class="cell100 column5">{{i.breed}}</td>
-            <form action="#" method="POST">
-              {% csrf_token %}           
-            <td class="cell100 column6">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>{{i.stage}}</option>
-                <option value="1">Milking</option>
-                <option value="2">Pregnant</option>
-                <option value="3">Calving</option>
-                <option value="4">Adult</option>
-              </select>
-            </td>
-            
-            <td class="cell100 column7">
-              <input class="btn btn-primary my-3 mx-4" name="Submit" id="Submit" type="submit" value="{{forloop.counter}}">
-            </td>
-
-            </form>
+            <td class="cell100 column5">{{i.breed}}</td>         
+            <td class="cell100 column6">{{i.stage}}</td>
           </tr>
           {% endfor %}
            </tbody>
       </table>
+      <hr class="last">
     </div>
   </div>
 {% endblock %}

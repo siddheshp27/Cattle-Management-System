@@ -1,7 +1,6 @@
 {% extends 'navbar.html' %}
-{%block title %} Home {% endblock %}
+{%block title %}Cattle Care | Home {% endblock %}
   {% block CSS %}
-   
 
     /*slider*/
 
@@ -79,7 +78,7 @@
       transform: translateY(-50%);
       margin-right: 40px;
     }
-  {% endblock  %} 
+  {% endblock %} 
 {% block body %}  
   <!-- Home Page Cow Image -->
   <div class="homeimage">
@@ -108,10 +107,10 @@
                   <form class="row g-3 py-1" method="POST">
                     {% csrf_token %}
                     <div class="col-auto">
-                      <input type="date" class="form-control" id="FindDate" name="FindDate" required >
+                      <input type="date" class="form-control" id="FindDate" name="FindDate" >
                     </div>
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-outline-dark mb-3" value="Find Entry" > Fetch
+                      <button type="submit" class="btn btn-outline-dark mb-3" value="Find Entry" required> Fetch
                     </div>
                 </form>
                   <div class="dropup">

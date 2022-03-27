@@ -318,5 +318,24 @@ def heatcalc(request) :
     return render(request, 'HeatDisplay.html',storeall)
  
 def fetchacc(request) :
-  return render(request,'fetchacc.html')    
+    if request.method == "POST" :
+     fetch_date=request.POST['FindDate']
+     store=Account.objects.all()
+     Earn_bull=Account.objects.values('Earnings_bulls').filter(date=fetch_date)
+     Earn_extra=Account.objects.values('Earnings_extra').filter(date=fetch_date)
+     Feeder=Account.objects.values('Expenditure_Feeder').filter(date=fetch_date)
+     Medical=Account.objects.values('Expenditure_Medical').filter(date=fetch_date)
+     Labour=Account.objects.values('Expenditure_Labour').filter(date=fetch_date)
+     Eexpenses=Account.objects.values('Expenditure_Eexpenses').filter(date=fetch_date)
+     totex=Feeder[0]['Expenditure_Feeder']+Medical[0]['Expenditure_Medical']+Labour[0]['Expenditure_Labour']+Eexpenses[0]['Expenditure_Eexpenses']
+     totea=Earn_bull[0]['Earnings_bulls'] + Earn_extra[0]['Earnings_extra']
+     totearn={'earn':totea}
+     totexpenses={'expenses':totex}
+     pro=totea-totex
+     profit={'inc':pro}
+     date_data=store.filter(date=fetch_date)
+     params={'storeall':date_data,"totearn":totearn,"totexpenses":totexpenses,"profit":profit}
+     print(params)
+     return render(request,'fetchacc.html',params )
+    return render(request,'dateacc.html')    
 

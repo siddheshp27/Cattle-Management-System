@@ -1,5 +1,5 @@
 {% extends 'navbar.html' %}
-{% block title %}Animal Registrarion {% endblock %}
+{% block title %}Cattle Care | Account{% endblock %}
  {% block CSS %}
    /*form*/
    body {
@@ -13,158 +13,43 @@
    }
 
    .card {
-     margin-top: 40px;
+     margin-top: 28%;
    }
 
    .card-header {
+       font-style: italic;
      font-size: x-large;
    }
 
-   .my-form,
-   .login-form {
-     font-family: Raleway, sans-serif;
+   .box {
+       display: flex;
+       margin-left:30%;
    }
 
-   .my-form {
-     padding-top: 1.5rem;
-     padding-bottom: 1.5rem;
+   #FindDate {
+       width:40%;
    }
 
-   .my-form .row {
-     margin-left: 0;
-     margin-right: 0;
-     margin-bottom: 1.5rem;
-   }
-
-   label {
-     display: inline-block;
-     width: 150px;
-     text-align: right;
-     font-size: large;
-   }
-
-   .labels {
-     font-size: large;
-   }
-
-   .form-check-label {
-     text-align: left;
-   }
-
-   .login-form {
-     padding-top: 1.5rem;
-     padding-bottom: 1.5rem;
-   }
-
-   .login-form .row {
-     margin-left: 0;
-     margin-right: 0;
-   }
-
-   .register-button {
-     margin-left: 50%;
-     margin-bottom: 15px;
-   }
  {% endblock %}  
 
 {% block body %}
  <!--form-->
  <main class="my-form">
-   <div class="cotainer">
+   <div class="cotainer rounded-3">
      <div class="row justify-content-center">
-       <div class="col-md-8">
-         <div class="card">
+       <div class="col-md-5">
+         <div class="card rounded-3">
            <div class="card-header">
-             <center><b>Enter the Date for Account Record to be fetched</b></center>
+             <center><b>Enter the Date of Account Record to be Fetched</b></center>
            </div>
            <div class="card-body">
-             <form name="my-form" method="POST">
+             <form method="POST">
               {% csrf_token %} 
-               <div class="form-group row">
-                 <label class="labels col-md-4 col-form-label text-md-right">Eartag Number</label>
-                 <div class="col-md-6">
-                   <input type="number" min="0" id="full_name" class="form-control" name="full-name" required>
-                 </div>
-               </div>
-
-               <div class="form-group row">
-                 <label for="DOB" class="labels col-md-4 col-form-label text-md-right">Date of Birth</label>
-                 <div class="col-md-6">
-                   <input type="date" id="DOB" class="form-control" value=" " name="DOB"
-                     placeholder="mm/dd/yyyy" required>
-                 </div>
-               </div>
-
-               <div class="form-group row">
-                 <label for="sex" id="sex" class="labels col-md-4 col-form-label text-md-right">Sex</label>
-                 <div class=" sexradio row col-md-6" required>
-                   <div class="form-check form-check-inline col-2">
-                     <input class="form-check-input" type="radio" name="sex" id="maleRadio" value="MALE"
-                       required>
-                     <label class="form-check-label radio-inline" for="maleRadio">Male</label>
-                   </div>
-                   <div class="form-check form-check-inline col-2">
-                     <input class="form-check-input" type="radio" name="sex" id="femaleRadio"
-                       value="FEMALE">
-                     <label class="form-check-label radio-inline" for="femaleRadio">Female</label>
-                   </div>
-                 </div>
-               </div>
-
-               <div class="breed form-group row">
-                 <label for="boc" class="labels col-md-4 col-form-label text-md-right">Breed of Cattle</label>
-                 <div class="col-md-6">
-                   <input type="text" id="boc" class="form-control" name="boc" required>
-                 </div>
-               </div>
-
-               <div class="form-group row" required>
-                 <label for="SOC" id="SOC" class="labels col-md-4 col-form-label text-md-right">Stage of cow</label>
-                 <div class="col-md-6">
-                   <div class="stageoption row">
-                     <div class="form-check col-3">
-                       <input class="form-check-input" type="radio" name="stage" id="stage1" value="Milking">
-                       <label class="form-check-label radio-inline" for="stage1">
-                         Milking
-                       </label>
-                     </div>
-                     <div class="form-check col-4">
-                       <input class="form-check-input" type="radio" name="stage" id="stage2" value="Pregnant">
-                       <label class="form-check-label radio-inline" for="stage2">
-                         Pregnant
-                       </label>
-                     </div>
-                     <div class="form-check col-3">
-                       <input class="form-check-input" type="radio" name="stage" id="stage3" value="Calf">
-                       <label class="form-check-label radio-inline" for="stage3">
-                         Calf
-                       </label>
-                     </div>
-                     <div class="form-check col-2">
-                       <input class="form-check-input" type="radio" name="stage" id="stage4" value="Adult">
-                       <label class="form-check-label radio-inline " for="stage4">
-                         Adult
-                       </label>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-
-               <div class="calvingsno form-group row">
-                 <label for="NoC" id="NoC" class="labels col-md-4 col-form-label text-md-right">Number of Calvings</label>
-                 <div class="col-md-6">
-                   <input type="number" min="0" max="15" id="present_address"  name="present_address" class="form-control">
-                 </div>
-               </div>
-
-               <div class="register-button col-md-6 offset-md-4">
-                 <a href="alldata.html">
-                   <button type="submit" class="btn btn-primary">
-                     Register
-                   </button>
-                 </a>
-               </div>
+              <div class="box col-auto">
+                <input type="date" class="form-control" id="FindDate" name="FindDate" required>
+                <button type="submit" class="btn btn-dark mx-3" value="Find Entry" > Fetch
              </form>
+            </div>
            </div>
          </div>
        </div>
