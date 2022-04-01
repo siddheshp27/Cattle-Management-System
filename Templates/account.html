@@ -1,34 +1,27 @@
 {%extends 'navbar.html'%}
 {%block title %}Cattle Care | Accounts {% endblock %}
 {% block CSS %}
-
 body {
   background-color: #f5f8fa;
 }
-
 .vertical {
     display: flex;
     margin-top: 80px;
     margin-left: 80px;
     margin-right: 50px;
 }
-
 .box {
   background-color: white;
 }
-
 .button {
   position: relative;
   float: center;
 }
-
 {%endblock%}
 {% block body %}
-<form action="#" method="POST">
-  
+<form action="#" method="POST">  
   {% csrf_token %}
 <div class="vertical">
-
 <div class="box container-sm border border-dark rounded-3">
     <h3 class="my-2">Earnings:</h3>
       <hr>
