@@ -3,7 +3,7 @@
 
 This project was developed using the Python-based Django framework.
 
-Its main goal is to help farmers maintain their account
+The main goal of the website is to help farmers maintain their account
 so that they can know their profit margin and make
 improvements accordingly.It helps farmer maintain their accounts
 so that they can know their profit margin and make
